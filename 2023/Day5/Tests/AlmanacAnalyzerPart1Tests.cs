@@ -82,5 +82,15 @@ namespace Day5.Tests
 
             Check.That(soilLocation).IsEqualTo(35);
         }
+
+        [Fact(Skip = "Input file is not provided according to the will of the adventOfCode author")]
+        public void Part1_Input()
+        {
+            var almanac = File.ReadAllLines("./Resources/Input.txt");
+
+            var soilLocation = new AlmanacAnalyzerPart1(almanac).GetLowestDestination();
+
+            Check.That(soilLocation).IsEqualTo(331445006);
+        }
     }
 }

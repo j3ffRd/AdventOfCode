@@ -16,4 +16,10 @@
 		</PackageReference>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="Resources\Input.txt">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 </Project>

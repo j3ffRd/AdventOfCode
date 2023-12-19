@@ -1,14 +1,14 @@
 ﻿using NFluent;
 using Xunit;
 
-namespace Day3
+namespace Day3.Tests
 {
     public class EngineSchemaTests
     {
         [Fact]
         public void A_Schema_With_No_Number_Returns_zero()
         {
-            string[] schema = {  "."  };
+            string[] schema = { "." };
 
             var result = GetSumOfPartNumbers(schema);
 
@@ -18,7 +18,7 @@ namespace Day3
         [Fact]
         public void A_Schema_With_One_Number_And_No_Symbol_Returns_0()
         {
-            string[] schema = {  "5"  };
+            string[] schema = { "5" };
 
             var result = GetSumOfPartNumbers(schema);
 
@@ -74,9 +74,9 @@ namespace Day3
         }
 
         [Fact]
-        public void Part_1_Example_returns_4361()
+        public void Part1_Example()
         {
-            string[] schema = 
+            string[] schema =
                 {
                     "467..114..",
                     "...*......",
@@ -95,8 +95,18 @@ namespace Day3
             Check.That(result).IsEqualTo(4361);
         }
 
+        [Fact(Skip = "Input file is not provided according to the will of the adventOfCode author")]
+        public void Part1_Input()
+        {
+            string[] schema = File.ReadAllLines("./Resources/Input.txt");
+
+            var result = GetSumOfPartNumbers(schema);
+
+            Check.That(result).IsEqualTo(535078);
+        }
+
         [Fact]
-        public void Part_2_Example_returns_467835()
+        public void Part2_Example()
         {
             string[] schema =
                 {
@@ -115,6 +125,16 @@ namespace Day3
             var result = GetSumOfStarSymbolAdjacentToTwoNumbers(schema);
 
             Check.That(result).IsEqualTo(467835);
+        }
+
+        [Fact(Skip = "Input file is not provided according to the will of the adventOfCode author")]
+        public void Part2_Input()
+        {
+            string[] schema = File.ReadAllLines("./Resources/Input.txt");
+
+            var result = GetSumOfStarSymbolAdjacentToTwoNumbers(schema);
+
+            Check.That(result).IsEqualTo(75312571);
         }
 
         private int GetSumOfPartNumbers(string[] schema)

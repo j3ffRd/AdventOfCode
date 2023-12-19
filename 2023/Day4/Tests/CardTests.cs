@@ -1,7 +1,7 @@
 ﻿using NFluent;
 using Xunit;
 
-namespace Day4
+namespace Day4.Tests
 {
     public class CardDeskTests
     {
@@ -43,8 +43,8 @@ namespace Day4
         [Fact]
         public void Should_Sum_All_Cards_Score()
         {
-            var cards = new List<string> 
-            { 
+            var cards = new List<string>
+            {
                 "Card 1: 41 42 43 44 | 41 42 43 44" ,
                 "Card 2: 41 42 43 01 | 41 42 43 02" ,
             };
@@ -53,7 +53,7 @@ namespace Day4
         }
 
         [Fact]
-        public void Part1_Example_Returns_13()
+        public void Part1_Example()
         {
             var cards = new List<string>
             {
@@ -68,10 +68,18 @@ namespace Day4
             Check.That(GetScore(cards)).IsEqualTo(13);
         }
 
+        [Fact(Skip = "Input file is not provided according to the will of the adventOfCode author")]
+        public void Part1_Input()
+        {
+            var cards = File.ReadAllLines("./Resources/Input.txt");
+
+            Check.That(GetScore(cards)).IsEqualTo(24733);
+        }
+
         [Fact]
         public void A_List_Of_Two_Cards_With_One_Matching_Number_Returns_three()
         {
-            var cards = new List<string> 
+            var cards = new List<string>
             {
                 "Card 1: 41 | 41",
                 "Card 2: 41 | 10",
@@ -94,7 +102,7 @@ namespace Day4
         }
 
         [Fact]
-        public void Part2_Example_Returns_30()
+        public void Part2_Example()
         {
             var cards = new List<string>
             {
@@ -109,6 +117,14 @@ namespace Day4
             Check.That(GetTotalScratchCardsCount(cards)).IsEqualTo(30);
         }
 
+        [Fact(Skip = "Input file is not provided according to the will of the adventOfCode author")]
+        public void Part2_Input()
+        {
+            var cards = File.ReadAllLines("./Resources/Input.txt");
+
+            Check.That(GetTotalScratchCardsCount(cards)).IsEqualTo(5422730);
+        }
+
         private int GetScore(IList<string> cards)
         {
             return new Game(cards).GetScore();
@@ -117,6 +133,6 @@ namespace Day4
         private int GetTotalScratchCardsCount(IList<string> cards)
         {
             return new Game(cards).GetTotalScratchCardsCount();
-        }        
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using NFluent;
 using Xunit;
 
-namespace Day1
+namespace Day1.Tests
 {
     public class CalibrationCalculatorTest
     {
@@ -44,30 +44,51 @@ namespace Day1
         [Fact]
         public void String_Of_Two_Lines_Returns_The_Sum_Of_Values_For_Each_Lines()
         {
-            Check.That(GetCalibration("a3pm2e\r\nbe2ye5ml")).IsEqualTo(32+25);
+            Check.That(GetCalibration("a3pm2e\r\nbe2ye5ml")).IsEqualTo(32 + 25);
         }
 
         [Fact]
-        public void First_Example_Returns_142()
+        public void Part1_Example()
         {
             Check.That(GetCalibration("1abc2\r\npqr3stu8vwx\r\na1b2c3d4e5f\r\ntreb7uchet")).IsEqualTo(142);
+        }
+
+        [Fact(Skip = "Input file is not provided according to the will of the adventOfCode author")]
+        public void Part1_Input()
+        {
+            var input = File.ReadAllText("./Resources/Input.txt");
+
+            Check.That(GetCalibration(input)).IsEqualTo(55029);
         }
 
         [Fact]
         public void String_Of_Digits_spelled_In_Letters_Returns_The_First_and_Last_Corresponding_Digits()
         {
-            Check.That(GetCalibration("two1nine")).IsEqualTo(29);
+            Check.That(GetCalibrationPart2("two1nine")).IsEqualTo(29);
         }
 
         [Fact]
-        public void Second_Example_Returns_281()
+        public void Part2_Example()
         {
-            Check.That(GetCalibration("two1nine\r\neightwothree\r\nabcone2threexyz\r\nxtwone3four\r\n4nineeightseven2\r\nzoneight234\r\n7pqrstsixteen")).IsEqualTo(281);
+            Check.That(GetCalibrationPart2("two1nine\r\neightwothree\r\nabcone2threexyz\r\nxtwone3four\r\n4nineeightseven2\r\nzoneight234\r\n7pqrstsixteen")).IsEqualTo(281);
         }
-     
+
+        [Fact(Skip = "Input file is not provided according to the will of the adventOfCode author")]
+        public void Part2_Input()
+        {
+            var input = File.ReadAllText("./Resources/Input.txt");
+
+            Check.That(GetCalibrationPart2(input)).IsEqualTo(55686);
+        }
+
         private int GetCalibration(string input)
         {
             return new CalibrationCalculator().GetSumOfCalibration(input);
+        }
+
+        private int GetCalibrationPart2(string input)
+        {
+            return new CalibrationCalculatorPart2().GetSumOfCalibration(input);
         }
     }
 }

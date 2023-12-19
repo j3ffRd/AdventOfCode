@@ -90,7 +90,7 @@ namespace Day7.Tests
         }
 
         [Fact]
-        public void Part2_Example_retruns_5905()
+        public void Part2_Example()
         {
             var hands = new string[]
             {
@@ -104,6 +104,16 @@ namespace Day7.Tests
             var total = new CamelCardGame(hands).GetTotalWinPart2();
 
             Check.That(total).IsEqualTo(5905);
+        }
+
+        [Fact(Skip = "Input file is not provided according to the will of the adventOfCode author")]
+        public void Part2_Input()
+        {
+            var hands = File.ReadAllLines("./Resources/Input.txt");
+
+            var total = new CamelCardGame(hands).GetTotalWinPart2();
+
+            Check.That(total).IsEqualTo(248747492);
         }
     }
 }

@@ -74,7 +74,7 @@ namespace Day8.Tests
         }
 
         [Fact]
-        public void Example_Part_2_returns_6()
+        public void Example_Part_2()
         {
             var input = new string[]
             {
@@ -93,6 +93,16 @@ namespace Day8.Tests
             var count = new Map(input).GetStepCountPart2();
 
             Check.That(count).IsEqualTo(6);
+        }
+
+        [Fact(Skip = "Input file is not provided according to the will of the adventOfCode author")]
+        public void Input_Part_2()
+        {
+            var input = File.ReadAllLines("./Resources/Input.txt");
+
+            var count = new Map(input).GetStepCountPart2();
+
+            Check.That(count).IsEqualTo(22103062509257);
         }
     }
 }
